@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blog</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}" />
+  </head>
+  <body>
+    <h1>Posts</h1>
+    <ul>
+      {% for post in posts %}
+      <li>
+        <strong>{{ post.title }}</strong><br />
+        <small>{{ post.created_at|date:"Y-m-d H:i" }}</small>
+        <p>{{ post.content }}</p>
+      </li>
+      {% empty %}
+      <li>No hay posts aún.</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
