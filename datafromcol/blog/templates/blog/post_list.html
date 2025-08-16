@@ -1,23 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Blog</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'blog/style.css' %}" />
-  </head>
-  <body>
-    <h1>Posts</h1>
-    <ul>
-      {% for post in posts %}
-      <li>
-        <strong>{{ post.title }}</strong><br />
-        <small>{{ post.created_at|date:"Y-m-d H:i" }}</small>
-        <p>{{ post.content }}</p>
-      </li>
-      {% empty %}
-      <li>No hay posts aún.</li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+{% extends "base.html" %} {% block content %}
+<section class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md mt-8">
+  <div class="mb-6 border-b pb-4 flex justify-between items-center">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">📦 Detalles de tu orden</h1>
+      <p class="text-gray-500 text-sm">
+        Aquí puedes ver el estado y los artículos de tu pedido.
+      </p>
+    </div>
+
+    <div>
+      <div class="flex items-center space-x-3">
+        <div
+          class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold"
+        >
+          Kevin Galileo
+        </div>
+        <span class="text-lg font-medium text-gray-800">
+          {{ order.user.username }}
+        </span>
+      </div>
+      <span class="text-sm text-gray-500">
+        {{ order.order_date|date:"d M Y" }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Ordenes -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div>
+      <h2 class="text-lg font-semibold text-gray-700">Número de orden</h2>
+      <p class="text-gray-600">Orden #{{ order.id }}</p>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold text-gray-700">Estado</h2>
+      <span
+        class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm"
+      >
+        En camino
+      </span>
+    </div>
+  </div>
+</section>
+{% endblock content %}

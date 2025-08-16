@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Posts</h1>
+<ul>
+  {% for post in posts %}
+  <li>
+    <strong>{{ post.title }}</strong>
+    <small>{{ post.created_at|date:"Y-m-d H:i" }}</small>
+    <p>{{ post.content }}</p>
+  </li>
+  {% empty %}
+  <li class="text-red-500">No hay posts aún.</li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}
