@@ -1,0 +1,25 @@
+cat > .gitignore << 'EOF'
+# Python / Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+db.sqlite3
+.env
+*.log
+
+# Entornos / herramientas
+.venv/
+venv/
+.env*/
+.idea/
+.vscode/
+
+# Archivos de compilación
+staticfiles/
+media/
+*.egg-info/
+dist/
+build/
+EOF
+
+echo "# DataFromCol" > README.md
